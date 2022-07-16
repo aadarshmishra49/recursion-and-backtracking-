@@ -1,0 +1,23 @@
+link -- https://www.codingninjas.com/codestudio/problems/subset-sum_3843086?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+  code --
+  
+  void solve(vector<int>& num,vector<int>& ans,int sum,int i){
+    if(i==num.size()){
+        ans.push_back(sum);
+        return ;
+    }
+    solve(num,ans,sum,i+1);
+    sum += num[i];
+    solve(num,ans,sum,i+1);
+    
+}
+
+vector<int> subsetSum(vector<int> &num)
+{
+    // Write your code here.
+    int sum=0;
+    vector<int> ans;
+    solve(num,ans,sum,0);
+        sort(ans.begin(),ans.end());
+       return ans;
+}
