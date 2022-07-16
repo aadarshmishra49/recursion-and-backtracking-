@@ -1,0 +1,34 @@
+link -- https://practice.geeksforgeeks.org/problems/subsets-1613027340/0?category=
+
+code --
+
+class Solution
+{
+    public:
+    void solve(vector<int>& A,vector<int> output,vector<vector<int>>& ans,int index){
+        if(index>=A.size()){
+            ans.push_back(output);
+            return;
+            
+        }
+        //exclude
+        solve(A,output,ans,index+1);
+        //include
+        int element=A[index];
+        output.push_back(element);
+        solve(A,output,ans,index+1);
+        
+    }
+    vector<vector<int> > subsets(vector<int>& A)
+    {
+        //code here
+        vector<vector<int>> ans;
+        vector<int> output;
+        int index=0;
+        solve(A,output,ans,index);
+        sort(ans.begin(),ans.end());
+        return ans;
+        
+    }
+};
+
