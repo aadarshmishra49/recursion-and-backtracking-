@@ -1,5 +1,36 @@
 link -- https://leetcode.com/problems/subsets-ii/
 code --
+
+#include<bits/stdc++.h>
+void solve(vector<int>& arr,int n,set<vector<int>> &st,int index,vector<int> output){
+    
+if(index==n){
+    sort(output.begin(),output.end());
+    st.insert(output);
+    return;
+}
+    //exclude
+   solve(arr,n,st,index+1,output);
+    //include
+   output.push_back(arr[index]);
+   solve(arr,n,st,index+1,output);
+    
+}
+
+vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
+{
+   set<vector<int>> st;
+    vector<vector<int>> ans;
+    int index=0;
+    vector<int> output;
+    solve(arr,n,st,index,output);
+    for(it:st)
+        ans.push_back(it);
+    return ans;
+    
+      
+}
+code 2-- 
  
  class Solution {
 public:
