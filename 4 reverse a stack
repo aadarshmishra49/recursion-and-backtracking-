@@ -1,0 +1,29 @@
+  vector<int> ans;
+    void solve(stack<int> &s){
+        if(s.empty()) return ;
+        ans.push_back(s.top());
+        s.pop();
+        solve(s);
+    
+ }
+ vector<int> Reverse(stack<int> St){
+        solve(St);
+        return ans;
+        
+    }
+};
+
+
+// iterative code 
+
+vector<int >ans;
+while(!st.empty()){
+
+            ans.push_back(st.top());
+            st.pop();
+            
+        }
+        
+      
+        return ans;
+}
