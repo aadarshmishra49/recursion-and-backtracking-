@@ -22,18 +22,23 @@ vector<vector<int>> towerOfHanoi(int n)
 
 // count total steps
 
-   int count=0;
-   long long toh(int N, int from, int to, int aux) {
-        // Your code here
-        if(N==0){
-            return count;
-        }
-        toh(N-1,from,aux,to);
-        cout<< "move disk "<< N <<" from rod "<< from << " to rod " << to <<endl;
-       count++;
-      // int ans=count;
-      
-        toh(N-1,aux,to,from);
-        return count ;      
-     }
+   long long toh(int n, int from, int to, int aux) {
+       //Base Case
+       if(n==1){
+       cout<<"move disk "<<n<<" from rod "<<from<<"to rod "<<to<<endl;
+          return 1;
+       }
+    
+    // Made 2 variable for counting steps count1 and count2;
+    
+    int count1=toh(n-1,from,aux,to);
 
+
+    cout<<"move disk "<<n<<" from rod "<<from<<" to rod "<<to<<endl;
+
+
+    int count2=toh(n-1,aux,to,from);
+
+
+    return count1+count2+1;
+   }
