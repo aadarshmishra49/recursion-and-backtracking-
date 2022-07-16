@@ -1,0 +1,39 @@
+link - https://www.codingninjas.com/codestudio/problems/tower-of-hanoi_981323?leftPanelTab=0
+
+code --
+
+#include<bits/stdc++.h>
+void solve(int n, int a, int b, int c, vector<vector<int>>& res){
+   if(n == 0) return;
+   solve(n-1, a, c, b, res);   // move the n-1 disk to c by taking the help of b
+   res.push_back({a,c});      // store in res
+   solve(n-1, b, a, c, res);   // again move n-1 disk to b by taking the help of c
+
+}
+vector<vector<int>> towerOfHanoi(int n)
+{
+    //    Write your code here.
+  vector<vector<int>> res;
+    if(n == 0) return res;
+    // recursion using solve function.
+    solve(n, 1, 2, 3, res);
+    return res;
+}
+
+// count total steps
+
+   int count=0;
+   long long toh(int N, int from, int to, int aux) {
+        // Your code here
+        if(N==0){
+            return count;
+        }
+        toh(N-1,from,aux,to);
+        cout<< "move disk "<< N <<" from rod "<< from << " to rod " << to <<endl;
+       count++;
+      // int ans=count;
+      
+        toh(N-1,aux,to,from);
+        return count ;      
+     }
+
